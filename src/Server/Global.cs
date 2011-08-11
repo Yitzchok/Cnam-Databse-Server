@@ -4,16 +4,17 @@ using System.Linq;
 using System.Text;
 using Raven.Client;
 using Raven.Client.Document;
+using Raven.Client.Embedded;
 
 namespace Server
 {
     public class Global
     {
-        public static IDocumentStore DocumentStore { get; private set; }
+        public static IDocumentStore Store { get; private set; }
 
         public Global()
         {
-            DocumentStore = new DocumentStore().Initialize();
+            Store = new EmbeddableDocumentStore { DataDirectory = "Data" }.Initialize();
         }
     }
 }

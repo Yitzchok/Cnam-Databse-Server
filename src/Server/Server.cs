@@ -16,20 +16,20 @@ namespace Server
 
         public void GetCallerName(IManosContext ctx, string number)
         {
-            using (var session = Global.DocumentStore.OpenSession())
+            using (var session = Global.Store.OpenSession())
             {
                 var callerId = (from cnam in session.Query<CallerId>()
                                 where cnam.PhoneNumber == number.Trim()
                                 select cnam.Name).FirstOrDefault();
 
 
-                ctx.Response.End(string.IsNullOrEmpty(callerId) ? callerId : number);
+                ctx.Response.End(!string.IsNullOrEmpty(callerId) ? callerId : number);
             }
         }
 
         public void AddCallerIdToSystem(IManosContext ctx, string number, string name)
         {
-            using (var session = Global.DocumentStore.OpenSession())
+            using (var session = Global.Store.OpenSession())
             {
                 var callerId = session.Query<CallerId>().Where(x => x.PhoneNumber == number).FirstOrDefault();
                 if (callerId == null)
