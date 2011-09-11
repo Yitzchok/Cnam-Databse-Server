@@ -11,7 +11,7 @@ namespace Server
             transaction.Response.ContentEncoding = Encoding.UTF8;
             //transaction.Response.Headers.SetHeader("Content-Type", "text/plain; charset=UTF-8");
             //transaction.Response.Headers.SetHeader("Content-Language", "en");
-
+            transaction.Response.Headers.ContentEncoding = Encoding.UTF8;
             complete();
         }
     }
