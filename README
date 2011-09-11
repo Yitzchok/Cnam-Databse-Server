@@ -1,0 +1,7 @@
+This is a cnam database lookup server.
+This application was created with Manos (https://github.com/jacksonh/manos) for the web server
+and RavenDB (https://github.com/ravendb/ravendb) for the database.
+
+To start the server run "manostool.exe --server -a Server.dll"
+To add and update records go to localhost:8080/AddUpdateCNam
+To query the server for a cnam localhost:8080/GetCallerName?number=npanxxxxxx
